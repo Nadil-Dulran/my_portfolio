@@ -2,6 +2,7 @@
 import React from 'react';
 import { Box, Container, Typography, Grid, Card, CardContent } from '@mui/material';
 
+
 export default function AboutSection() {
   return (
     <Box id="about" className="section">

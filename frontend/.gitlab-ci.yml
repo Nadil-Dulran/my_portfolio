@@ -1,0 +1,59 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_website:
+  stage: build
+  image: node:22-alpine
+  script:
+    - node --version   # Print Node.js version
+    - npm --version    # Print npm version
+    - npm ci           # Install dependencies using package-lock.json
+    - npm run build    # Build the application
+    - ls -la build/    # List build artifacts
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 hour  # Artifacts expire after 1 hour
+
+test_artifact:
+  image: alpine
+  stage: test 
+  dependencies:
+    - build_website    # Explicitly depend on build_website job
+  script:
+    - test -f build/index.html  # Check if the build artifact exists
+    - echo "Build artifact verification passed"
+
+unit_test:
+  image: node:22-alpine
+  stage: test
+  script:
+    - npm ci           # Install dependencies
+    - npm test -- --watchAll=false --verbose
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - reports/junit.xml
+    expire_in: 1 week  # Keep test reports for a week
+
+deploy:
+  stage: deploy
+  image: node:22-alpine
+  variables:
+    NETLIFY_SITE_ID: '561eb8b2-7b25-44cb-9d85-45f2a033c482'
+  dependencies:
+    - build_website   # pull in build/ from previous stage
+  script:
+    - npm install -g netlify-cli
+    - netlify --version
+    - echo "Deploying to site id $NETLIFY_SITE_ID"
+    - ls -la build/   # ✅ debug: check that artifact is here
+    # Use the correct deploy command with authentication
+    - netlify deploy --prod --dir build --site $NETLIFY_SITE_ID
+  #- apk add curl
+  # - curl "https://janidupabasara2003.netlify.app/" | grep "Hi, I'm Janidu"
+  only:
+    - main
