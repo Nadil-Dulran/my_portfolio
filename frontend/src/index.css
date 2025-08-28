@@ -1,0 +1,20 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+.section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
