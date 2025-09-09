@@ -43,7 +43,7 @@ deploy:
   stage: deploy
   image: node:22-alpine
   variables:
-    NETLIFY_SITE_ID: '561eb8b2-7b25-44cb-9d85-45f2a033c482'
+    NETLIFY_SITE_ID: '7f22f84c-0dc4-4d8f-b21d-621c8810a0db'
   dependencies:
     - build_website   # pull in build/ from previous stage
   script:
