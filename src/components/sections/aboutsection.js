@@ -11,10 +11,9 @@ export default function AboutSection() {
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
             <Typography sx={{ lineHeight: 2.0 }}>
-              I am a Computer Science undergraduate at SLIIT, actively seeking opportunities to explore new technologies and gain
-              hands-on experience. I am passionate about blending AI technology, user interface design, and storytelling to create
-              impactful digital experiences through software development. I enjoy working on projects that follow established
-              guidelines and principles with collaborative team environments to ensure successful project completion.
+              I am a Computer Science undergraduate at SLIIT with a strong interest in full-stack development and building end-to-end digital solutions. 
+              I enjoy creating web applications with AI integration. My experience includes with technologies such as React, Spring Boot, .NET, and SQL along with CI/CD deployment pipelines and cloud environments. 
+              Driven by curiosity and teamwork, I aim to craft impactful, user-centered software while continuously learning and exploring areas like AI integrations and intelligent web systems.
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
