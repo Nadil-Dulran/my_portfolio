@@ -9,6 +9,7 @@ A modern, responsive portfolio built with React and Material UI implementing sin
 
 ## CI/CD (GitLab)
 This project uses GitLab CI/CD with separate stages for build, test, and deploy.
+- URL: https://gitlab.com/nadil-dulran-group/Nadil-Dulran-project
 - **Build:** Installs dependencies and builds the production bundle.
 - **Test:** Runs unit and smoke tests in CI (Jest/React Testing Library).
 - **Deploy:** Publishes the built `build/` artifacts to Netlify.
